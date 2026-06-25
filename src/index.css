@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand accent — "icecubes" periwinkle → indigo. */
+  --color-brand-50: #f1f1fc;
+  --color-brand-100: #e3e3f9;
+  --color-brand-200: #cbcbf4;
+  --color-brand-300: #a9a9ec;
+  --color-brand-400: #8b8be6;
+  --color-brand-500: #6f6fdd;
+  --color-brand-600: #5b59cf;
+  --color-brand-700: #4a47b0;
+  --color-brand-800: #393684;
+  --color-brand-900: #1d1c54;
+
+  /* Named palette swatches (icecubes: pale → lavender → sky → blue → periwinkle) */
+  --color-honeydew: #efeffb; /* ice white */
+  --color-lightcyan: #dedff8; /* lavender */
+  --color-frosted: #c3d6f5; /* sky */
+  --color-wisteria: #9fb4ee; /* blue */
+  --color-slateblue: #8c8cea; /* periwinkle */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #e6e7f8;
+  color: #0f172a;
+  font-family: 'Raleway', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  /* Brand is all-lowercase — render UI text to match. */
+  text-transform: lowercase;
+}
+
+/* Subheadings use Playfair Display italic (Astrid Smith style). */
+h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+/* Buttons don't inherit text-transform in the UA stylesheet — force them lowercase too. */
+button {
+  text-transform: lowercase;
+}
+
+/* Keep what users type / pick in their original case. */
+input,
+textarea,
+select,
+option {
+  text-transform: none;
+}
+
+/* App-wide page background — icecubes tones with the light glow at bottom-middle. */
+.app-bg {
+  background-image:
+    radial-gradient(85% 65% at 50% 108%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(180deg, #c6c7f1 0%, #d6d8f6 42%, #e9eafb 100%);
+}
+
+/* Sparkle cursor particles (Generate Sample Project effect) */
+@keyframes bb-sparkle {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, -30px))) scale(0.1) rotate(240deg); }
+}
+
+/* Hide chrome when printing an export preview */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
