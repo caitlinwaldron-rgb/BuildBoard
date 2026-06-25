@@ -650,32 +650,3 @@ function MiniCalendar({ today, itemDates }: { today: string; itemDates: Set<stri
     </div>
   );
 }
-
-/** Radiating line "sparkle" graphic, echoing the reference poster. */
-function Starburst({ className }: { className?: string }) {
-  const C = 100;
-  const COUNT = 24;
-  const inner = 6;
-  const lines = Array.from({ length: COUNT }, (_, i) => {
-    const a = (i / COUNT) * Math.PI * 2;
-    const len = i % 3 === 0 ? 94 : 64; // every third ray is longer → star points
-    return (
-      <line
-        key={i}
-        x1={C + Math.cos(a) * inner}
-        y1={C + Math.sin(a) * inner}
-        x2={C + Math.cos(a) * len}
-        y2={C + Math.sin(a) * len}
-        stroke="white"
-        strokeWidth={1}
-        strokeOpacity={0.9}
-        strokeLinecap="round"
-      />
-    );
-  });
-  return (
-    <svg viewBox="0 0 200 200" className={className} aria-hidden="true">
-      {lines}
-    </svg>
-  );
-}
